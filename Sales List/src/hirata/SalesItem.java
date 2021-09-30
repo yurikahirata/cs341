@@ -36,9 +36,9 @@ public class SalesItem {
 	}
 	
 	public String toString() {
-		String priceString = "$" + Double.toString(price);
-		String quantityString = Integer.toString(quantity);
-		return String.format("%-25s %-10s %-10s %n", toTitle(name), priceString, quantityString);
+		String priceString = String.format("%.2f", getPrice());
+		String quantityString = Integer.toString(getQuantity());
+		return String.format("%-14s $%5s %3s\n", toTitle(name), priceString, quantityString);
 	}
 	
 	public String toTitle(String s) {

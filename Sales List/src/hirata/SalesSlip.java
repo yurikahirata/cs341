@@ -18,7 +18,7 @@ public class SalesSlip {
 		for (SalesItem item: saleList) {
 			sum += (item.getPrice() * item.getQuantity());
 		}
-		return sum + "";
+		return String.format("%.2f", sum);
 	}
 	
 	public String toString() {
