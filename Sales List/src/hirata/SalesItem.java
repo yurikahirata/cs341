@@ -41,7 +41,7 @@ public class SalesItem {
 		return String.format("%-14s $%5s %3s\n", toTitle(name), priceString, quantityString);
 	}
 	
-	public String toTitle(String s) {
+	public String toTitle(String s) { // Method to convert to Title Case
 		String result = "";
 		boolean convertNext = true;
 		
