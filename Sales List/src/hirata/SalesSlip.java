@@ -9,8 +9,13 @@ public class SalesSlip {
 		saleList = new ArrayList<SalesItem>();
 	}
 	
-	public void addSalesItem(SalesItem s) {
-		saleList.add(s);
+	public void addSalesItem(String item, String price, String quantity) {
+		SalesItem newItem = new SalesItem();
+		newItem.setName(item);
+		newItem.setPrice(Double.parseDouble(price));
+		newItem.setQuantity(Integer.parseInt(quantity));
+		
+		saleList.add(newItem);
 	}
 	
 	public String computeTotalSales() {

@@ -53,11 +53,7 @@ public class Main {
 	}
 	
 	public void addItem() {
-		SalesItem temp = new SalesItem();
-		temp.setName(txtFieldItem.getText());
-		temp.setPrice(Double.parseDouble(txtFieldCost.getText()));
-		temp.setQuantity(Integer.parseInt(txtFieldQuantity.getText()));
-		salesSlip.addSalesItem(temp);
+		salesSlip.addSalesItem(txtFieldItem.getText(), txtFieldCost.getText(), txtFieldQuantity.getText());
 		textArea.setText(salesSlip.toString());
 		txtFieldTotal.setText(salesSlip.computeTotalSales());
 	}
