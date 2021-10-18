@@ -18,11 +18,11 @@ public class Main {
 		try {
 			System.out.println("Looking for file");
 			sc = new Scanner(file);
-			System.out.println("file found");
+			System.out.println("file found \n");
 			grabSort(sc, arrayList);
 
 		} catch (IOException e) {
-			System.out.println("File not found");
+			System.out.println("File not found \n");
 		}
 		finally {
 			if (sc != null)
@@ -33,12 +33,13 @@ public class Main {
 			dictionary.insertWordNode(arrayList.get(i).replaceAll("\\s",""));
 		}
 		
+		System.out.println("Displaying the dictionary: ");
 		dictionary.displayDictionary();
-		System.out.println("'You' exists within this dictionary: " + dictionary.spellCheck("you"));
-		//dictionary.displayDictionary();
-		dictionary.checkWord("your");
 		System.out.println();
-		dictionary.displayDictionary();
+		System.out.println("'You' exists within this dictionary: " + dictionary.spellCheck("you"));
+		System.out.println("'Zebra' exists within this dictionary: " + dictionary.spellCheck("zebra") + "\n");
+		
+		
 
 	}
 	

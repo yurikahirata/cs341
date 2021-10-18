@@ -16,6 +16,7 @@ public class Dictionary {
 		} else {
 			insertAtLocation(root, temp);
 		}
+		
 	}
 
 	private void insertAtLocation(WordNode ptr, WordNode wordToAdd) {
@@ -85,93 +86,49 @@ public class Dictionary {
 		
 	}
 	
-	public void checkWord(String str) {
-		deleteNode(root, str);
-	}
-	
-	private void deleteNode(WordNode ptr, String str) {
-		WordNode parent = null;
-		WordNode current = ptr;
-		
-		while (current!= null && !current.word.equalsIgnoreCase(str)) {
-			parent = current;
-			 
-            if (str.compareToIgnoreCase(current.word)>0) {
-                current = current.right;
-            }
-            else {
-                current = current.left;
-            }
-		}
-		
-		if (current == null) {
-			System.out.println("No node to delete");
-			return;
-		}
-		
-		// Node to be deleted has no children
-		if (current.left == null && current.right == null) {
-   
-            if (current != root)
-            {
-                if (parent.left == current) {
-                    parent.left = null;
-                }
-                else {
-                    parent.right = null;
-                }
-            }
-            // If the tree has only a root node, set it to null
-            else {
-                root = null;
-            }
-        }
-		
-		// Node to be deleted has two children
-		else if (current.left != null && current.right != null)
-        {
-            // Find its inorder successor node
-            WordNode successor = getMinimumKey(current.right);
- 
-            // Store successor word
-            String s = successor.word;
- 
-            // Recursively delete the successor
-            deleteNode(root, successor.word);
- 
-            // Copy word of the successor to the current node
-            current.word = s;
-        }
-		
-		else {
-            // Choose a child node
-            WordNode child = (current.left != null)? current.left: current.right;
- 
-            // if the node to be deleted is not a root node, set its parent to its child
-            if (current != root)
-            {
-                if (current == parent.left) {
-                    parent.left = child;
-                }
-                else {
-                    parent.right = child;
-                }
-            }
- 
-            // If node to be deleted is the root node
-            else {
-                root = child;
-            }
-        }
-	}
-	
-	private WordNode getMinimumKey(WordNode curr)
-    {
-        while (curr.left != null) {
-            curr = curr.left;
-        }
-        return curr;
-    }
+	/*
+	 * public void checkWord(String str) { deleteNode(root, str); }
+	 * 
+	 * private void deleteNode(WordNode ptr, String str) { WordNode parent = null;
+	 * WordNode current = ptr;
+	 * 
+	 * while (current!= null && !current.word.equalsIgnoreCase(str)) { parent =
+	 * current;
+	 * 
+	 * if (str.compareToIgnoreCase(current.word)>0) { current = current.right; }
+	 * else { current = current.left; } }
+	 * 
+	 * if (current == null) { System.out.println("No node to delete"); return; }
+	 * 
+	 * // Node to be deleted has no children if (current.left == null &&
+	 * current.right == null) {
+	 * 
+	 * if (current != root) { if (parent.left == current) { parent.left = null; }
+	 * else { parent.right = null; } } // If the tree has only a root node, set it
+	 * to null else { root = null; } }
+	 * 
+	 * // Node to be deleted has two children else if (current.left != null &&
+	 * current.right != null) { // Find its inorder successor node WordNode
+	 * successor = getMinimumKey(current.right);
+	 * 
+	 * // Store successor word String s = successor.word;
+	 * 
+	 * // Recursively delete the successor deleteNode(root, successor.word);
+	 * 
+	 * // Copy word of the successor to the current node current.word = s; }
+	 * 
+	 * else { // Choose a child node WordNode child = (current.left != null)?
+	 * current.left: current.right;
+	 * 
+	 * // if the node to be deleted is not a root node, set its parent to its child
+	 * if (current != root) { if (current == parent.left) { parent.left = child; }
+	 * else { parent.right = child; } }
+	 * 
+	 * // If node to be deleted is the root node else { root = child; } } }
+	 * 
+	 * private WordNode getMinimumKey(WordNode curr) { while (curr.left != null) {
+	 * curr = curr.left; } return curr; }
+	 */
 
 
 }
