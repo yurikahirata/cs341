@@ -13,7 +13,11 @@ public class LinkedList {
 		length = 0;
 	}
 	
-	// Method to add node to LinkedList
+	/**
+	 * Method to add node to LinkedList
+	 * @param d Double value of new Node
+	 */
+
 	public void addNode(Double d) {
 			Node temp = new Node(d);
 			if (head == null) {
@@ -27,7 +31,11 @@ public class LinkedList {
 			length++;
 	}
 	
-	// Method to calculate the mean
+	/**
+	 * Method to calculate the mean of the LinkedList
+	 * @return Mean as a String
+	 */
+	
 	public String getMean() {
 		// Mean of one number is the number itself
 		if (head!= null && head==tail) {
@@ -47,7 +55,11 @@ public class LinkedList {
 		}
 	}
 	
-	// Method to calculate the standard deviation
+	/**
+	 * Method to calculate the standard deviation of the LinkedList
+	 * @return Standard Deviation as a String
+	 */
+	
 	public String getSD() {
 		// Standard deviation of one number if 0
 		if (head!= null && head==tail) {

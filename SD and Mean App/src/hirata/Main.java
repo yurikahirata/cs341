@@ -16,6 +16,11 @@ import javax.swing.JTextField;
 
 public class Main {
 
+	/**
+	 * @author Yurika Hirata
+	 * @version 1.0
+	 */
+	
 	private JFrame frame;
 	private JTextField textFieldMean;
 	private JTextField textFieldSD;
@@ -49,7 +54,11 @@ public class Main {
 		});
 	}
 
-	// Method to find file, add numbers to LinkedList, and calculate mean and SD
+	/**
+	 * Method to find file, add numbers to LinkedList, and calculate mean and SD
+	 * @return The mean and SD
+	 */
+
 	public void calculate() {
 		linkedList = new LinkedList();
 
