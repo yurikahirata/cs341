@@ -13,22 +13,22 @@ import java.util.TreeMap;
 
 public class Main {
 
-	static int LOC = 0;
+	static int LOC = 0; // Variable to hold total lines of code
 	
 	public static void main(String[] args) {
 		File file = new File("/Users/yurikahirata/Desktop/KeywordTest.txt");
 		
-		Scanner controlScan = null;
-		Scanner methodScan = null;
-		Scanner locScan = null;
+		Scanner countScan = null; // Scanner for counting keywords
+		Scanner methodScan = null; // Scanner for finding methods
+		Scanner locScan = null; // Scanner to count total lines of code
 		
 		try {
-			controlScan = new Scanner(file);
+			countScan = new Scanner(file);
 			methodScan = new Scanner(file);
 			locScan = new Scanner(file);
 			
 			
-			countKeywords(controlScan);
+			countKeywords(countScan);
 			
 			ArrayList<String> list = createArrayListMCS(methodScan);
 			for (int i = 0; i< list.size(); i++) {
@@ -43,12 +43,13 @@ public class Main {
 			
 		} finally {
 			
-			if (controlScan != null)
-				controlScan.close();
+			if (countScan != null)
+				countScan.close();
 			
 		}
 	}
 	
+		// Method to find methods in the file
 		public static ArrayList<String> createArrayListMCS (Scanner fileScan) {
 			Stack<String> myStack = new Stack<String>();
 			
@@ -77,6 +78,7 @@ public class Main {
 			
 		}
 	
+		// Method to count keywords for control structures
 		public static void countKeywords (Scanner fileScan) {
 			String [] controlKeywords = {"else if", "if", "else", "switch", "for", "while", "break", "continue"};
 			Set <String> controlSet = new HashSet<>(Arrays.asList(controlKeywords));
@@ -103,17 +105,19 @@ public class Main {
 
 	}
 		
+		// Method to count lines of code
 		public static void linesOfCode (Scanner fileScan) {
 			String line = "";
 			
 			while (fileScan.hasNextLine()) {
 				line = fileScan.nextLine();
 				
-				if (line.contains("/*")) {
+				if (line.contains("/*")) { // If block comment
 					do {
 						line = fileScan.nextLine();
 					} while (!line.contains("*/"));
-				} else if (line.contains("/") || line.length()==0) {
+					line = fileScan.nextLine();
+				} else if (line.contains("/") || line.length()==0) { // If comment or empty line
 					line = fileScan.nextLine();
 				} else {
 					LOC++;
