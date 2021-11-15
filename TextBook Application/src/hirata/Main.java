@@ -100,7 +100,7 @@ public class Main {
 		    	try {
 			         FileInputStream fileIn = new FileInputStream(new File ("/Users/yurikahirata/Desktop/CS_341_01/inventoryObject.ser"));
 			         ObjectInputStream in = new ObjectInputStream(fileIn);
-			         myInventory = (Inventory) in.readObject();
+			         myInventory = new Inventory(in.readObject());
 			         in.close();
 			         fileIn.close();
 			      } catch (Exception e) {

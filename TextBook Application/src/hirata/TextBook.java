@@ -1,12 +1,14 @@
 package hirata;
 
-public class TextBook {
+import java.io.Serializable;
+
+public class TextBook implements Serializable {
 	private String title;
 	private String sku;
 	private double price;
 	private int quantity;
 	
-	public TextBook(String s, String textbook, double p, int q) {
+	public TextBook(String s, String textbook, double p, Integer q) {
 		title = textbook;
 		sku = s;
 		price = p;

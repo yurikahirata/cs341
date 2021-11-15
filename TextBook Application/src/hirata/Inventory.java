@@ -3,13 +3,22 @@ package hirata;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventory {
-	private ArrayList<TextBook> bookList;
+public class Inventory implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static ArrayList<TextBook> bookList;
 
 	public Inventory() {
 		bookList = new ArrayList<TextBook>();
+	}
+
+	public Inventory (Object object) {
+		bookList = (ArrayList<TextBook>) object;
 	}
 
 	// Method to add textbook
@@ -65,7 +74,6 @@ public class Inventory {
 	         out.writeObject(bookList);
 	         out.close();
 	         fileOut.close();
-	         System.out.printf("Serialized data is saved in /tmp/bookList.ser");
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         
