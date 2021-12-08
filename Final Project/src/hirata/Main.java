@@ -16,7 +16,7 @@ public class Main {
 		Type_B_GameObject gameObjectB = new Type_B_GameObject();
 		Type_B_GameObject_Adapter adaptedB = new Type_B_GameObject_Adapter(50, 200, gameObjectB);
 		adaptedB.setVelocity(5);
-		adaptedB.setVelocityY(10);
+		adaptedB.setVelocityY(9);
 		canvas.addGameObject(adaptedB);
 		
 		Type_C_GameObject gameObjectC = new Type_C_GameObject(200, 350);
