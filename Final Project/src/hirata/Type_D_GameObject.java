@@ -7,7 +7,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Type_D_GameObject extends GameObject implements KeyListener {
-
+	private Canvas canvas;
+	
 	public Type_D_GameObject(int x, int y) {
 		super(x, y);
 		setDirection(Direction.NONE);
@@ -20,7 +21,9 @@ public class Type_D_GameObject extends GameObject implements KeyListener {
 
 	}
 
+	// Method to move when selected
 	public void moveUser(Canvas c) {
+		canvas = c;
 		c.addKeyListener(this);
 
 
@@ -64,13 +67,13 @@ public class Type_D_GameObject extends GameObject implements KeyListener {
 
 	}
 
+	// Method to stay still when not selected
 	public void move(Canvas c) {
-		c.removeKeyListener(this);
+		canvas = c;
 		setDirection(Direction.NONE);
 	}
 
-	//SPECIFY THE IMAGE TO DISPLAY
-	//   USED FOR ANIMATION
+	// Method to set image based on direction
 	public void setImage() {
 		switch (getDirection()) {
 		case Direction.NONE:
@@ -94,11 +97,14 @@ public class Type_D_GameObject extends GameObject implements KeyListener {
 	}
 
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() != KeyEvent.VK_TAB) {
+		if (e.getKeyCode() != KeyEvent.VK_TAB) { // If key pressed is not tab, stop moving object upon key release 
 			setDirection(Direction.NONE);
+		} else if (e.getKeyCode() == KeyEvent.VK_TAB) { // If tab is pressed, remove Key Listener
+			canvas.removeKeyListener(this);
 		}
 	}
 
+	// Move gameObject based on user input
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			setDirection(Direction.UP);

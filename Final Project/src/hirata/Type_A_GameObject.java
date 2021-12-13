@@ -9,12 +9,10 @@ import javax.swing.ImageIcon;
 
 public class Type_A_GameObject extends GameObject  implements KeyListener {
 	private int imageHeight;
-	private int prevDirect;
+	private Canvas canvas;
 
 	public Type_A_GameObject(int x, int y) {
 		super(x, y);
-		//setDirection(Direction.DOWN);
-		//setHighlighted(true);
 
 		imageList = new LinkedList<Icon>();
 		imageList.add(new ImageIcon("images/Type_A_Up.png"));
@@ -25,9 +23,11 @@ public class Type_A_GameObject extends GameObject  implements KeyListener {
 
 	}
 
+	// Method to move automatically when not selected
 	public void move(Canvas c) {
-		c.removeKeyListener(this);
 
+		canvas = c;
+		
 		if (getDirection() == Direction.UP) {
 			setY(getY() - getVelocity());
 			if(getY() < 0) { // If collided with the wall, reset position to edge and change direction
@@ -41,16 +41,17 @@ public class Type_A_GameObject extends GameObject  implements KeyListener {
 				setDirection(Direction.UP);
 			}
 		} else {
-			setDirection(prevDirect);
-
+			setDirection(Direction.UP);
 		}
 	}
 
+	// Method to move when game object is selected
 	public void moveUser(Canvas c) {
+		canvas = c;
+		
 		c.addKeyListener(this);
 		int  canvasHeight = (int) c.getSize().getHeight();
 
-		//MOVE BLUE GAME OBJECT
 		switch (getDirection()) {
 		case Direction.UP:
 			setY(getY() - getVelocity());
@@ -69,6 +70,7 @@ public class Type_A_GameObject extends GameObject  implements KeyListener {
 		}
 	}
 
+	// Method to set correct image based on its direction
 	public void setImage() {
 		switch (getDirection()) {
 		case Direction.NONE:
@@ -86,25 +88,21 @@ public class Type_A_GameObject extends GameObject  implements KeyListener {
 
 	}
 
-	public void keyPressed(KeyEvent e) {
-		//if (getHighlighted() == true) {
+	public void keyPressed(KeyEvent e) { // Move gameObject based on user input
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
 				setDirection(Direction.UP);
 			}
 			if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 				setDirection(Direction.DOWN);
 			}
-		//}
 
 	}
 
 	public void keyReleased(KeyEvent e) {
-		//if (getHighlighted() == true) {		
-			if (e.getKeyCode() != KeyEvent.VK_TAB) {  
-				prevDirect = getDirection();
-				setDirection(Direction.NONE);
-			}
-		//}
-
+		if (e.getKeyCode() != KeyEvent.VK_TAB) { // If key pressed is not tab, stop moving object upon key release 
+			setDirection(Direction.NONE);
+		} else if (e.getKeyCode() == KeyEvent.VK_TAB) { // If tab is pressed, remove Key Listener
+			canvas.removeKeyListener(this);
+		}
 	}
 }

@@ -19,7 +19,6 @@ public class Canvas extends JComponent implements ActionListener, KeyListener { 
 	private static final long serialVersionUID = 1L;
 	private int highlighted = 0;
 	private HighlightSquare square;
-	//private ImageIcon square;
 
 	public Canvas () {
 		// Create list of game objects
@@ -42,7 +41,6 @@ public class Canvas extends JComponent implements ActionListener, KeyListener { 
 		addKeyListener(this);
 		
 		square = new HighlightSquare(500,100);
-		//square = new ImageIcon("images/Highlighted.png");
 	}
 
 	// Method to add Game Objects
@@ -84,21 +82,11 @@ public class Canvas extends JComponent implements ActionListener, KeyListener { 
 
 	public void keyReleased(KeyEvent e) {
 	
-		if (e.getKeyCode() == KeyEvent.VK_TAB) {
+		if (e.getKeyCode() == KeyEvent.VK_TAB) { // Change highlighted object when tab is pressed
 			highlighted = highlighted + 1;
 			if (highlighted == gameObjectList.size()) {
 				highlighted = 0;
 			}
 			}
-
-		/*
-		 * GameObject setFalse; if (highlighted != 0) setFalse =
-		 * gameObjectList.get(highlighted-1); else setFalse =
-		 * gameObjectList.get(gameObjectList.size()-1);
-		 * 
-		 * setFalse.setHighlighted(false); GameObject setTrue =
-		 * gameObjectList.get(highlighted); setTrue.setHighlighted(true);
-		 */
-		//s.setVelocity(s.getVelocity()+1);
 	}
 }

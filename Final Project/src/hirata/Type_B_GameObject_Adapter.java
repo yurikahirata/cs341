@@ -28,6 +28,7 @@ public class Type_B_GameObject_Adapter extends GameObject {
 		return typeBObject.velocityY;
 	}
 
+	// Method to move automatically when not selected
 	public void move(Canvas c) {
 		Icon icon = getCurrentImage();
 
@@ -67,10 +68,12 @@ public class Type_B_GameObject_Adapter extends GameObject {
 		
 	}
 
+	// Method to select icon image
 	public void setImage() {
-		currentImage = 0;
+		currentImage = 0; // Image stays the same no matter the direction
 	}
 
+	// Method to move automatically even when selected
 	public void moveUser(Canvas c) {
 		Icon icon = getCurrentImage();
 
